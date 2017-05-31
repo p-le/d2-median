@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Runeword from '@/components/Runeword'
 import NotFound from '@/components/NotFound'
+import rws from '../rw.json'
 
 Vue.use(Router)
 
@@ -15,7 +16,8 @@ export default new Router({
     {
       path: basePath,
       name: 'Runeword',
-      component: Runeword
+      component: Runeword,
+      props: { rws }
     },
     { path: '*', component: NotFound }
   ]
