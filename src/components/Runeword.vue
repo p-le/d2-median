@@ -71,11 +71,11 @@ export default {
       searchTypes: [],
       rwResult: [],
       headers: [
-        { text: 'Name', value: 'name' },
-        { text: 'Level', value: 'level' },
-        { text: 'Runes', value: 'name' },
-        { text: 'Type', value: 'rwType' },
-        { text: 'Description', value: 'description' }
+        { text: 'Name', value: 'name', left: true },
+        { text: 'Level', value: 'level', left: true },
+        { text: 'Runes', value: 'name', left: true },
+        { text: 'Type', value: 'rwType', left: true },
+        { text: 'Description', value: 'description', left: true }
       ]
     }
   },
