@@ -33,17 +33,12 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <div>
-      {{ searchTypes }}
-      {{ minLevel }}
-      {{ maxLevel }}
-    </div>
     <div class="search">
       <v-btn floating large primary @click.native="search">
         <v-icon light>search</v-icon>
       </v-btn>
     </div>
-    <div v-if="rwResult.length > 0">
+    <div v-if="rwResult.length > 0" class="result">
       <v-data-table
         :headers="headers"
         :items="rwResult"
@@ -137,5 +132,8 @@ export default {
 .search {
   display: flex;
   justify-content: center;
+}
+.result {
+  padding-bottom: 15px;
 }
 </style>
