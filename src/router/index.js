@@ -5,11 +5,15 @@ import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
 
+let basePath = '/'
+if (process.env.NODE_ENV === 'production') {
+  basePath = '/d2-median/'
+}
 export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: basePath,
       name: 'Runeword',
       component: Runeword
     },
