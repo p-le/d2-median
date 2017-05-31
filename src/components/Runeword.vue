@@ -46,11 +46,11 @@
         class="elevation-1"
       >
         <template slot="items" scope="props">
-          <td class="text-xs-right">{{ props.item.name }}</td>
-          <td class="text-xs-right">{{ props.item.level }}</td>
-          <td class="text-xs-right">{{ props.item.runes }}</td>
-          <td class="text-xs-right">{{ props.item.rwType }}</td>
-          <td class="text-xs-right">{{ props.item.description }}</td>
+          <td class="text-xs">{{ props.item.name }}</td>
+          <td class="text-xs">{{ props.item.level }}</td>
+          <td class="text-xs" v-html="props.item.runes"></td>
+          <td class="text-xs">{{ props.item.rwType }}</td>
+          <td class="text-xs" v-html="props.item.description"></td>
         </template>
       </v-data-table>
     </div>
@@ -90,7 +90,21 @@ export default {
         }
         return isOk
       })
-      console.log(this.rwResult)
+      this.rwResult = this.rwResult.map(rw => {
+        rw.description = rw.description.join('<br />')
+        const runes = rw.runes
+        const tmp = []
+        for (let i = 0; i < runes.length; i++) {
+          if (!runes[i].includes('Rune')) {
+            tmp.push(`${runes[i]} ${runes[i + 1]}`)
+            i++
+          } else {
+            tmp.push(runes[i])
+          }
+        }
+        rw.runes = tmp.join('<br />')
+        return rw
+      })
     }
   },
   created: function () {
@@ -134,6 +148,6 @@ export default {
   justify-content: center;
 }
 .result {
-  padding-bottom: 15px;
+  padding-bottom: 30px;
 }
 </style>
